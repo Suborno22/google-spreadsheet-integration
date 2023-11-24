@@ -9,4 +9,3 @@ To check the data, start by building the folder and running the **server.php** f
 Run these codes below before starting to work with it:-
 1) docker build -t google-spreadsheet-integration .
 2) docker run -p 8080:80 google-spreadsheet-integration:latest
-3) 
