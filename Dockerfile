@@ -7,8 +7,11 @@ WORKDIR /var/www/html
 # Copy the current directory contents into the container at /var/www/html
 COPY . /var/www/html
 
-# Install apt-utils to suppress debconf warning
-RUN apt-get update && apt-get install -y apt-utils
+# Set noninteractive mode for apt
+ARG DEBIAN_FRONTEND=noninteractive
+
+# Install apt-utils to suppress debconf warning and unzip
+RUN apt-get update && apt-get install -y apt-utils unzip
 
 # Install any dependencies your PHP project needs (e.g., PHP extensions)
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
