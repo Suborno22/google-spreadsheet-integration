@@ -4,4 +4,4 @@ This is a fun project that I made just to understand how to collect data from go
 
 This sheet is entirely based upon PHP syntax and also HTML for display purposes. 
 
-To check the data, start by running the **server.php** file.
+To check the data, start by building the folder and running the **server.php** file.
