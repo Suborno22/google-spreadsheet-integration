@@ -48,7 +48,7 @@ $jsonString = json_encode($array, JSON_PRETTY_PRINT);
     <title>Movie Data</title>
 </head>
 <body>
-    <h1>The lists of books and movies</h1>
+    <h1>Lists of movies</h1>
     <table border="1">
         <thead>
             <tr>
@@ -75,7 +75,16 @@ $jsonString = json_encode($array, JSON_PRETTY_PRINT);
             // Insert cells for each property
             Object.keys(movie).forEach(function(key) {
                 var cell = row.insertCell();
-                cell.textContent = movie[key];
+
+                // Check if the property is "Poster" to handle image links
+                if (key === 'poster') {
+                    var img = document.createElement('img');
+                    img.src = movie[key];
+                    img.style.maxWidth = '100px'; // Set a maximum width for the images
+                    cell.appendChild(img);
+                } else {
+                    cell.textContent = movie[key];
+                }
             });
         });
     </script>
