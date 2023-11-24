@@ -36,7 +36,7 @@ foreach ($rows as $row) {
 }
 
 $jsonString = json_encode($array, JSON_PRETTY_PRINT);
-print($jsonString);
+// print($jsonString);
 
 ?> 
 <!DOCTYPE html>
@@ -44,9 +44,11 @@ print($jsonString);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Movie Data</title>
 </head>
 <body>
+    <h1>The lists of books and movies</h1>
     <table border="1">
         <thead>
             <tr>

@@ -7,8 +7,8 @@ WORKDIR /var/www/html
 # Copy the current directory contents into the container at /var/www/html
 COPY . /var/www/html
 
-# Set proper permissions
-RUN chown -R www-data:www-data /var/www/html
+# Install apt-utils to suppress debconf warning
+RUN apt-get update && apt-get install -y apt-utils
 
 # Install any dependencies your PHP project needs (e.g., PHP extensions)
 RUN docker-php-ext-install mysqli && docker-php-ext-enable mysqli
@@ -26,6 +26,10 @@ RUN a2enmod rewrite
 
 # Add a ServerName directive to suppress Apache warnings
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# Add these lines to enable directory listing and specify the default index file
+RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
+RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
 
 # Expose port 80 for the web server to listen on
 EXPOSE 80
