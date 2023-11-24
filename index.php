@@ -75,7 +75,16 @@ $jsonString = json_encode($array, JSON_PRETTY_PRINT);
             // Insert cells for each property
             Object.keys(movie).forEach(function(key) {
                 var cell = row.insertCell();
-                cell.textContent = movie[key];
+                
+                // Check if the key is 'poster' to handle the image differently
+                if (key === 'poster') {
+                    var img = document.createElement('img');
+                    img.src = movie[key];
+                    img.style.width = '100px'; // Adjust the width as needed
+                    cell.appendChild(img);
+                } else {
+                    cell.textContent = movie[key];
+                }
             });
         });
     </script>
