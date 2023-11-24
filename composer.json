@@ -1,0 +1,17 @@
+{
+    "name": "ubuntu/google-lead-sheet-integrate",
+    "autoload": {
+        "psr-4": {
+            "Ubuntu\\GoogleLeadSheetIntegrate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Suborno22",
+            "email": "dsuborno0@gmail.com"
+        }
+    ],
+    "require": {
+        "google/apiclient": "^2.0"
+    }
+}
