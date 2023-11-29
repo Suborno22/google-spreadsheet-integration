@@ -24,18 +24,18 @@ RUN apt-get update && \
 # Install project dependencies using Composer
 RUN composer install --no-dev --optimize-autoloader
 
-# Apache configuration (you may need to adjust this based on your project)
+# Apache configuration
 RUN a2enmod rewrite
 
 # Add a ServerName directive to suppress Apache warnings
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
-# Add these lines to enable directory listing and specify the default index file
+# Enabling directory listing and specifying the default index file
 RUN sed -i 's/AllowOverride None/AllowOverride All/' /etc/apache2/apache2.conf
 RUN echo "DirectoryIndex index.php index.html" >> /etc/apache2/apache2.conf
 
 # Expose port 80 for the web server to listen on
 EXPOSE 80
 
-# Define the command to run your PHP application
+# The command to run your PHP application
 CMD ["apache2-foreground"]
